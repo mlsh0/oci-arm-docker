@@ -1,0 +1,21 @@
+version: "3"
+services:
+  oci-arm:
+    image: ghcr.io/mlsh0/oci-arm-docker:latest
+    container_name: oci-arm
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=false"
+    volumes:
+      - ./key.pem:/app/key.pem:ro
+    env_file:
+      - ./variables.env
+    logging:
+      driver: json-file
+      options:
+        max-size: 3m
+
+networks:
+  proxy:
+    external: true
