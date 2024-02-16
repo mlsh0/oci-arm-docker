@@ -1,6 +1,6 @@
-LABEL org.opencontainers.image.source = "https://github.com/mlsh0/oci-arm-docker"
 FROM composer:latest AS composer
 FROM php:8.3-alpine3.19
+LABEL org.opencontainers.image.source = "https://github.com/mlsh0/oci-arm-docker"
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY app/ .
